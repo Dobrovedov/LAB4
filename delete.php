@@ -5,8 +5,10 @@
     <title></title>
 </head>
 <body>
-<h3>Удалить новость</h3>
-<table border='1' width='100%'>
+    <div class="container-fluid text-right" >
+        <h3>Удалить новость</h3>
+    </div>
+<table border='3' bordercolor="black" width='100%' style="background: #0082ae"> 
     <thead>
     <tr>
         <th>Id</th>
@@ -28,7 +30,7 @@
         <td>
             <form method="post">
                 <input type="hidden" name="id" value="<?php echo $row[0]; ?>"><!-- id данной строки -->
-                <input type="submit" name="submit" value="Удалить">
+                <input type="submit" name="submit"  style="background: #419fea" value="Удалить">
             </form>
         </td>
     </tr>
