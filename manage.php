@@ -7,7 +7,7 @@
 </head>
 <body>
 <br><br>
-<a href="index.php">Go to index page</a>
+<a href="index.php">Вернуться на главную страницу</a>
 <br><br>
 <?php
 

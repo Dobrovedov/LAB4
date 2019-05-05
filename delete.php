@@ -6,49 +6,39 @@
 </head>
 <body>
 <h3>Удалить новость</h3>
-<table id="news-list" border='1' width='100%'>
+<table border='1' width='100%'>
     <thead>
     <tr>
         <th>Id</th>
-        <th>Title</th>
-        <th>Text</th>
-        <th>Delete</th>
+        <th>Заглавие</th>
+        <th>Текст</th>
+        <th>Удаление</th>
     </tr>
     </thead>
     <tbody>
 
-    <?php
-
-    function limit_text($text, $limit)
-    {
-        if (str_word_count($text, 0) > $limit) {
-            $words = str_word_count($text, 2);
-            $pos = array_keys($words);
-            $text = substr($text, 0, $pos[$limit]) . '...';
-        }
-        return $text;
-    }?>
-
     <?php $result = mysqli_query($link, "select * from news");
-    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) :?>
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) ://Выбирает одну строку из результирующего набора и помещает ее в ассоциативный массив и так весь контект
+        ?>
 
     <tr>
         <td><?php echo $row[0]; ?></td>
         <td><?php echo $row[1]; ?></td>
-        <td><?php echo limit_text($row[2], 3); ?></td>
+        <td><?php echo $row[2]; ?></td>
         <td>
             <form method="post">
-                <input type="hidden" name="id" value="<?php echo $row[0]; ?>">
-                <input type="submit" name="submit" value="Delete">
+                <input type="hidden" name="id" value="<?php echo $row[0]; ?>"><!-- id данной строки -->
+                <input type="submit" name="submit" value="Удалить">
             </form>
         </td>
     </tr>
 
-    <?php endwhile;
+    <?php endwhile; //закрываем цикл
     $id = $_POST['id'];
-    $query = "DELETE FROM news WHERE id = $id";
-    mysqli_query($link, $query);
+    $query = "DELETE FROM news WHERE id = $id";//sql удалить все из таблицы пол этим id
+    mysqli_query($link, $query);// запрос на серевер
     ?>
+    </tbody>
 </table>
 </body>
 </html>
